@@ -9,7 +9,7 @@ import { HousingLocation } from './housing-location';
 export class AppComponent {
   title = 'fairhouse';
 
-  housingLocationList: HousingLocation[] = [
+  locListFromAppComponent: HousingLocation[] = [
     {
       name: "Acme Fresh Start Housing",
       city: "Chicago",

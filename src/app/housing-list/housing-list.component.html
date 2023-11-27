@@ -1,9 +1,8 @@
 <label for="location-search">Search for a new place</label>
-<input id="location-search" #search placeholder="Ex: Chicago"><button
-    (click)="searchHousingLocations(search.value)">Search</button>
-<article *ngFor="let location of results">
-    <img [src]="location.photo" [alt]="location.name">
+<!-- #search is an Angular template variable -->
+<input id="location-search" #search placeholder="Ex: Chicago">
+<!-- search.value is reference to value in the input box -->
+<button (click)="searchHousingLocations(search.value)">Search</button>
+<article *ngFor="let location of srchResultsFromHousingListComponent">
     <p>{{location.name}}</p>
-    <p>{{location.city}}, {{location.state}}</p>
-    <button (click)="selectHousingLocation(location)">View</button>
 </article>
