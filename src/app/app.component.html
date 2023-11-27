@@ -4,7 +4,26 @@
     Fairhouse
   </header>
   <section>
-    <app-housing-list [locListFromHousingListComponent]="locListFromAppComponent">
+    <app-housing-list [locListFromHousingListComponent]="locListFromAppComponent"
+      (locationSelectedEvent)="updateSelectedLocation($event)">
+      <!-- The $event is provided by Angular when dealing with event handlers in templates. The $event argument is an object of type HousingLocation because that is what we set the EventEmitter's type parameter to be. Angular handles all this for you. -->
     </app-housing-list>
   </section>
+  <!-- Since the selectedLocation can be undefined, you use the optional chaining operator to retrieve the values from the property. You're also using ternary syntax for the wifi and laundry boolean values. This provides the opportunity to display a custom message, depending on the value. 
+    
+    The optional chaining (?.) operator accesses an object's property or calls a function. If the object accessed or function called using this operator is undefined or null, the expression short circuits and evaluates to undefined instead of throwing an error.
+    -->
+  <article>
+    <ng-container *ngIf="selectedLocation">
+      <!-- Now the app only displays the content of the ng-container element if selectedLocation is Truthy.
+        In JavaScript, a truthy value is a value that is considered true when encountered in a Boolean context. All values are truthy unless they are defined as falsy. That is, all values are truthy except false, 0, -0, 0n, "", null, undefined, NaN, and document.all.
+       -->
+      <img [src]="selectedLocation.photo">
+      <p>{{selectedLocation.name}}</p>
+      <p>Available units: {{selectedLocation.availableUnits}}</p>
+      <p>{{selectedLocation.city}}, {{selectedLocation.state}}</p>
+      <p>{{selectedLocation.laundry ? "Has laundry" : "Does Not have laundry"}}</p>
+      <p>{{selectedLocation.wifi ? "Has wifi" : "Does Not have wifi"}}</p>
+    </ng-container>
+  </article>
 </main>

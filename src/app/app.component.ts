@@ -39,6 +39,9 @@ export class AppComponent {
     }
   ];
 
+  /*
+  This uses a TypeScript feature called a Union Type. Unions let variables accept one of multiple types. In this case, you want the value of selectedLocation to be HousingLocation or undefined because you're not specifying a default value for selectedLocation.
+  */
   selectedLocation: HousingLocation | undefined;// = this.housingLocationList[0];
 
   updateSelectedLocation(location: HousingLocation) {
